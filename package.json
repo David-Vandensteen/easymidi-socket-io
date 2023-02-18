@@ -1,0 +1,38 @@
+{
+  "name": "easymidi-socket-io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint src test",
+    "test:client": "node test/client.js",
+    "serve": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-Vandensteen/easymidi-socket-io.git"
+  },
+  "author": "David Vandensteen <dvandensteen@gmail.com>",
+  "license": "MIT",
+  "imports": {
+    "#src/*": "./src/*.js"
+  },
+  "bugs": {
+    "url": "https://github.com/David-Vandensteen/easymidi-socket-io/issues"
+  },
+  "homepage": "https://github.com/David-Vandensteen/easymidi-socket-io#readme",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.20",
+    "socket.io-client": "^4.6.0"
+  },
+  "dependencies": {
+    "easymidi": "^3.0.1",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.0"
+  }
+}
