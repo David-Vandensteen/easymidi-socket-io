@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "easymidi-socket-io-server": "./src/bin/easymidi-socket-io-server.js"
+  },
   "scripts": {
     "lint": "eslint src test",
     "test:client": "node test/client.js",
