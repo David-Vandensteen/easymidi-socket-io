@@ -1,13 +1,13 @@
 import io from 'socket.io-client';
 import { easymidiIO } from '#src/lib/easymidiIO';
 
-easymidiIO.startServer(3000);
-const out = new easymidiIO.Output('mcc-in');
+const { log } = console;
 
+easymidiIO.startServer('mcc-in', 3000);
 const ioClient = io.connect('http://localhost:3000', { reconnect: true });
 
 ioClient.on('connect', () => {
-  console.log('Connected!');
+  log('Connected!');
   ioClient.emit('midi', {
     controller: 37,
     value: 64,
@@ -16,4 +16,4 @@ ioClient.on('connect', () => {
   });
 });
 
-console.log(easymidiIO.getInputs());
+log(easymidiIO.getInputs());
