@@ -2,6 +2,7 @@ import http from 'http';
 import express from 'express';
 import { Server } from 'socket.io';
 import easymidi from 'easymidi';
+import { MidiNormalizer } from '#src/lib/midiNormalizer';
 
 const { log } = console;
 
@@ -30,7 +31,7 @@ easymidiIO.startServer = (midiDevice, port) => {
     log('a user connected');
     socket.on('midi', (message) => {
       log('received midi message from io client', message);
-      const normalizedMessage = message;
+      const normalizedMessage = MidiNormalizer.message(message);
       const { _type } = message;
       // eslint-disable-next-line no-underscore-dangle
       delete normalizedMessage._type;
