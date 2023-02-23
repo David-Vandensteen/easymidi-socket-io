@@ -1,9 +1,7 @@
 import io from 'socket.io-client';
-import { easymidiIO } from '#src/lib/easymidiIO';
 
 const { log } = console;
 
-easymidiIO.startServer('mcc-in', 3000);
 const ioClient = io.connect('http://localhost:3000', { reconnect: true });
 
 ioClient.on('connect', () => {
@@ -14,6 +12,5 @@ ioClient.on('connect', () => {
     channel: 0,
     _type: 'cc',
   });
+  ioClient.emit('dispose');
 });
-
-log(easymidiIO.getInputs());

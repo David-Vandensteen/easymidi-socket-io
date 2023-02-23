@@ -37,6 +37,10 @@ easymidiIO.startServer = (midiDevice, port) => {
       delete normalizedMessage._type;
       out.send(_type, normalizedMessage);
     });
+    socket.on('dispose', () => {
+      log('dispose');
+      out.close();
+    });
   });
 };
 

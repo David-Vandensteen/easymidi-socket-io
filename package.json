@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "eslint src test",
     "test:client": "node test/client.js",
+    "test:server": "node test/server.js",
     "serve": "nodemon src/index.js"
   },
   "repository": {
