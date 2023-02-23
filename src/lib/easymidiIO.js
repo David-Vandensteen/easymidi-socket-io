@@ -13,11 +13,11 @@ const io = new Server(server);
 const easymidiIO = {};
 easymidiIO.getInputs = () => easymidi.getInputs();
 easymidiIO.getOutputs = () => easymidi.getOutputs();
-easymidiIO.startServer = (midiDevice, port) => {
+easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
   if (port === undefined) throw new Error('port is undefined');
-  if (midiDevice === undefined) throw new Error('midi device is undefined');
+  if (midiOutput === undefined) throw new Error('midi device is undefined');
 
-  const out = new easymidi.Output(midiDevice);
+  const out = new easymidi.Output(midiOutput);
 
   app.get('/', (req, res) => {
     res.send('<h1>easymidi-socket.io</h1>');
