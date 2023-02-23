@@ -10,7 +10,9 @@
   "scripts": {
     "lint": "eslint src test",
     "test:client": "node test/client.js",
+    "test:client-bidirectional": "node test/client-bidirectional.js",
     "test:server": "node test/server.js",
+    "test:server-bidirectional": "node test/server-bidirectional.js",
     "serve": "nodemon src/index.js"
   },
   "repository": {
