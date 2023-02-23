@@ -1,3 +1,10 @@
 #!/usr/bin/env node
-// TODO
-console.log('cli');
+import { argService } from '#src/service/arg';
+import { easymidiIO } from '#src/lib/easymidiIO';
+
+const {
+  port, midiInput, midiOutput,
+} = argService;
+
+argService.checkArgumentsAndHelp();
+easymidiIO.startServer(midiOutput, port, { midiInput });

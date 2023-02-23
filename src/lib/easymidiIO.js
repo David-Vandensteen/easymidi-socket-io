@@ -15,7 +15,7 @@ easymidiIO.getInputs = () => easymidi.getInputs();
 easymidiIO.getOutputs = () => easymidi.getOutputs();
 easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
   if (port === undefined) throw new Error('port is undefined');
-  if (midiOutput === undefined) throw new Error('midi device is undefined');
+  if (midiOutput === undefined) throw new Error('midi device output is undefined');
   let midiIn;
 
   const midiOut = new easymidi.Output(midiOutput);
@@ -32,6 +32,7 @@ easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
 
   io.on('connection', (socket) => {
     log('a user connected');
+
     socket.on('midi', (message) => {
       log('received midi message from io client', message);
       const normalizedMessage = MidiNormalizer.message(message);
@@ -40,6 +41,7 @@ easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
       delete normalizedMessage._type;
       midiOut.send(_type, normalizedMessage);
     });
+
     socket.on('dispose', () => {
       log('dispose');
       midiOut.close();
