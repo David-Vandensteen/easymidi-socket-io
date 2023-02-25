@@ -13,7 +13,8 @@
     "test:client-bidirectional": "node test/client-bidirectional.js",
     "test:server": "node test/server.js",
     "test:server-bidirectional": "node test/server-bidirectional.js",
-    "serve": "nodemon src/index.js"
+    "serve": "nodemon src/index.js",
+    "package": "npx caxa --input . --output dist/easymidi-socket-io-server.exe --exclude dist -- {{caxa}}/node_modules/.bin/node.exe {{caxa}}/src/bin/easymidi-socket-io-server.js"
   },
   "repository": {
     "type": "git",
