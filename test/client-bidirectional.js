@@ -12,5 +12,11 @@ ioClient.on('connect', () => {
     channel: 0,
     _type: 'cc',
   });
-  ioClient.emit('dispose');
+
+  ioClient.on('midi', (message) => {
+    log('client : incoming message from server');
+    log(message);
+  });
+
+  // ioClient.emit('dispose');
 });

@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "easymidi-socket-io-server": "./src/bin/easymidi-socket-io-server.js"
+  },
   "scripts": {
     "lint": "eslint src test",
     "test:client": "node test/client.js",
-    "serve": "nodemon src/index.js"
+    "test:client-bidirectional": "node test/client-bidirectional.js",
+    "test:server": "node test/server.js",
+    "test:server-bidirectional": "node test/server-bidirectional.js",
+    "serve": "nodemon src/index.js",
+    "package": "npx caxa --input . --output dist/easymidi-socket-io-server.exe --exclude dist -- {{caxa}}/node_modules/.bin/node.exe {{caxa}}/src/bin/easymidi-socket-io-server.js"
   },
   "repository": {
     "type": "git",
@@ -28,11 +35,14 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.20",
-    "socket.io-client": "^4.6.0"
+    "socket.io-client": "^4.6.1"
   },
   "dependencies": {
+    "app-root-path": "^3.1.0",
+    "arg": "^5.0.2",
     "easymidi": "^3.0.1",
     "express": "^4.18.2",
-    "socket.io": "^4.6.0"
+    "fs-extra": "^11.1.0",
+    "socket.io": "^4.6.1"
   }
 }
