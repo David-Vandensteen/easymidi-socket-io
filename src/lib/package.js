@@ -13,6 +13,7 @@ const {
 
 export default pkg;
 export {
+  pkg,
   name,
   author,
   version,

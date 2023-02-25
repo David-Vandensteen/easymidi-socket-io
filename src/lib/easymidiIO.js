@@ -3,6 +3,7 @@ import express from 'express';
 import { Server } from 'socket.io';
 import easymidi from 'easymidi';
 import { MidiNormalizer } from '#src/lib/midiNormalizer';
+import { name, version, author } from '#src/lib/package';
 
 const { log } = console;
 
@@ -23,7 +24,7 @@ easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
   if (midiInput) { midiIn = new easymidi.Input(midiInput); }
 
   app.get('/', (req, res) => {
-    res.send('<h1>easymidi-socket.io</h1>');
+    res.send(`${name} - ${version}</br>${author}`);
   });
 
   server.listen(port, () => {
