@@ -34,7 +34,8 @@ easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
     log('a user connected');
 
     socket.on('midi', (message) => {
-      log('received midi message from io client', message);
+      log('server : received midi message from io client');
+      log(message);
       const normalizedMessage = MidiNormalizer.message(message);
       const { _type } = message;
       // eslint-disable-next-line no-underscore-dangle
@@ -50,17 +51,17 @@ easymidiIO.startServer = (midiOutput, port, { midiInput } = {}) => {
 
     if (midiIn) {
       midiIn.on('cc', (message) => {
-        log(`incoming midi message from device ${midiInput}`);
+        log(`server : incoming midi message from device ${midiInput}`);
         log(message);
         socket.emit('midi', message);
       });
       midiIn.on('noteon', (message) => {
-        log(`incoming midi message from device ${midiInput}`);
+        log(`server : incoming midi message from device ${midiInput}`);
         log(message);
         socket.emit('midi', message);
       });
       midiIn.on('noteoff', (message) => {
-        log(`incoming midi message from device ${midiInput}`);
+        log(`server : incoming midi message from device ${midiInput}`);
         log(message);
         socket.emit('midi', message);
       });

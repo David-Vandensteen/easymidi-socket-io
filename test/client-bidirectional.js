@@ -14,7 +14,7 @@ ioClient.on('connect', () => {
   });
 
   ioClient.on('midi', (message) => {
-    log('incoming message from server :');
+    log('client : incoming message from server');
     log(message);
   });
 
